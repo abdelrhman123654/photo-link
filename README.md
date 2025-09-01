@@ -1,8 +1,9 @@
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>محول الوسائط إلى روابط - النسخة الكاملة</title>
+    <title>محول الوسائط إلى روابط - الإصدار المحسن</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
@@ -127,40 +128,15 @@
             background: rgba(255, 255, 255, 0.03);
         }
         
-        .upload-box::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-            transform: rotate(45deg);
-            animation: shine 3s infinite;
-        }
-        
-        @keyframes shine {
-            0% {
-                left: -50%;
-            }
-            100% {
-                left: 150%;
-            }
-        }
-        
         .upload-icon {
             font-size: 4rem;
             margin-bottom: 20px;
             color: var(--warning);
-            position: relative;
-            z-index: 2;
         }
         
         .upload-text {
             font-size: 1.2rem;
             margin-bottom: 15px;
-            position: relative;
-            z-index: 2;
         }
         
         .upload-btn {
@@ -174,8 +150,6 @@
             transition: all 0.3s ease;
             display: inline-block;
             margin-top: 10px;
-            position: relative;
-            z-index: 2;
             box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
         }
         
@@ -367,6 +341,27 @@
             color: rgba(255, 255, 255, 0.7);
         }
         
+        .instructions {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px auto;
+            width: 100%;
+            max-width: 800px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .instructions h3 {
+            color: var(--warning);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .instructions ol {
+            padding-right: 20px;
+            line-height: 1.8;
+        }
+        
         footer {
             margin-top: 50px;
             text-align: center;
@@ -430,17 +425,17 @@
         <header>
             <div class="logo">
                 <i class="fas fa-server"></i>
-                <span class="logo-text">MediaShare Server</span>
+                <span class="logo-text">MediaShare</span>
             </div>
             <h1>محول الوسائط إلى روابط</h1>
             <p class="description">
                 نظام متكامل لتحويل الصور، الموسيقى والفيديوهات إلى روابط قابلة للمشاركة مع كود QR.
-                يتم تخزين الوسائط على خادم آمن ويمكن للآخرين الوصول إليها عبر الرابط.
+                يعمل مباشرة من المتصفح دون الحاجة لخادم.
             </p>
             
             <div class="server-status">
                 <div class="status-indicator"></div>
-                <span>الخادم يعمل - جاهز لاستقبال الملفات</span>
+                <span>النظام جاهز - يمكنك رفع الملفات</span>
             </div>
         </header>
         
@@ -477,7 +472,7 @@
         <div class="media-preview" id="mediaPreview"></div>
         
         <div class="result-container" id="resultContainer">
-            <h2 class="result-title">تم رفع الملف بنجاح إلى الخادم!</h2>
+            <h2 class="result-title">تم معالجة الملف بنجاح!</h2>
             
             <div class="link-box">
                 <input type="text" class="link-input" id="generatedLink" readonly>
@@ -494,19 +489,25 @@
             </div>
         </div>
         
-        <div class="server-info">
-            <i class="fas fa-database"></i> مساحة التخزين المستخدمة: <span id="storageUsed">0</span> من 100MB
+        <div class="instructions">
+            <h3>كيفية استخدام النظام:</h3>
+            <ol>
+                <li>قم باختيار ملف (صورة، فيديو، أو صوت) من جهازك</li>
+                <li>سيتم إنشاء معاينة للملف ورابط مباشر يمكن مشاركته</li>
+                <li>استخدم زر النسخ لمشاركة الرابط أو مسح كود QR</li>
+                <li>لاحظ أن الملفات ستظل متاحة فقط خلال هذه الجلسة ولن يتم تخزينها على الإنترنت</li>
+            </ol>
         </div>
         
         <div class="server-console" id="serverConsole">
-            <div class="console-entry">[INFO] تم تشغيل الخادم بنجاح</div>
-            <div class="console-entry">[INFO] جاهز لاستقبال طلبات الرفع</div>
+            <div class="console-entry">[INFO] تم تشغيل النظام بنجاح</div>
+            <div class="console-entry">[INFO] جاهز لاستقبال الملفات</div>
         </div>
     </div>
     
     <footer>
-        <p>© 2023 MediaShare Server. جميع الحقوق محفوظة.</p>
-        <p>هذا خادم افتراضي يحاكي عمل الخادم الحقيقي، التخزين يتم محلياً في المتصفح</p>
+        <p>© 2023 MediaShare. جميع الحقوق محفوظة.</p>
+        <p>هذا النظام يعمل محلياً على متصفحك ولا يتطلب خادمًا خارجيًا</p>
     </footer>
 
     <script>
@@ -522,31 +523,17 @@
             const copyBtn = document.getElementById('copyBtn');
             const downloadBtn = document.getElementById('downloadBtn');
             const serverConsole = document.getElementById('serverConsole');
-            const storageUsed = document.getElementById('storageUsed');
             let qrcode = null;
             let currentFile = null;
+            let currentObjectUrl = null;
             
-            // محاكاة الخادم - بيانات الملفات
-            let serverFiles = JSON.parse(localStorage.getItem('serverFiles') || '{}');
-            updateStorageUsage();
-            
-            // إضافة رسالة إلى console الخادم
+            // إضافة رسالة إلى console النظام
             function addConsoleMessage(message, type = 'info') {
                 const entry = document.createElement('div');
                 entry.className = `console-entry ${type}`;
                 entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
                 serverConsole.appendChild(entry);
                 serverConsole.scrollTop = serverConsole.scrollHeight;
-            }
-            
-            // تحديث مساحة التخزين المستخدمة
-            function updateStorageUsage() {
-                let totalSize = 0;
-                for (const id in serverFiles) {
-                    totalSize += serverFiles[id].size;
-                }
-                const usedMB = (totalSize / (1024 * 1024)).toFixed(2);
-                storageUsed.textContent = `${usedMB}MB`;
             }
             
             // التعامل مع رفع الملفات
@@ -590,31 +577,38 @@
                 setTimeout(() => {
                     copyBtn.innerHTML = originalText;
                 }, 2000);
+                
+                addConsoleMessage(`[ACTION] تم نسخ الرابط: ${generatedLink.value}`);
             });
             
             // تحميل كود QR
             downloadBtn.addEventListener('click', downloadQRCode);
             
-            // معالجة رفع الملف إلى الخادم
+            // معالجة رفع الملف
             function handleFileUpload() {
                 if (fileInput.files.length === 0) return;
                 
                 const file = fileInput.files[0];
                 currentFile = file;
                 
-                // التحقق من حجم الملف (100MB كحد أقصى)
-                if (file.size > 100 * 1024 * 1024) {
-                    addConsoleMessage(`[ERROR] حجم الملف كبير جداً: ${(file.size/(1024*1024)).toFixed(2)}MB. الحد الأقصى هو 100MB`, 'error');
-                    alert('حجم الملف كبير جداً. الحد الأقصى المسموح به هو 100MB');
+                // تنظيف Object URL السابق إذا كان موجودًا
+                if (currentObjectUrl) {
+                    URL.revokeObjectURL(currentObjectUrl);
+                }
+                
+                // التحقق من حجم الملف (50MB كحد أقصى)
+                if (file.size > 50 * 1024 * 1024) {
+                    addConsoleMessage(`[ERROR] حجم الملف كبير جداً: ${(file.size/(1024*1024)).toFixed(2)}MB. الحد الأقصى هو 50MB`, 'error');
+                    alert('حجم الملف كبير جداً. الحد الأقصى المسموح به هو 50MB');
                     return;
                 }
                 
                 // عرض معاينة الوسائط
                 showMediaPreview(file);
                 
-                // محاكاة الرفع إلى الخادم مع شريط التقدم
+                // محاكاة المعالجة مع شريط التقدم
                 progressContainer.style.display = 'block';
-                addConsoleMessage(`[UPLOAD] بدء رفع الملف: ${file.name} (${formatFileSize(file.size)})`);
+                addConsoleMessage(`[UPLOAD] بدء معالجة الملف: ${file.name} (${formatFileSize(file.size)})`);
                 
                 let progress = 0;
                 const uploadInterval = setInterval(() => {
@@ -630,50 +624,29 @@
             
             // إكمال عملية الرفع
             function finishUpload(file) {
-                // إنشاء معرف فريد للملف
-                const fileId = generateFileId();
+                // إنشاء Object URL للملف
+                currentObjectUrl = URL.createObjectURL(file);
                 
-                // حفظ الملف في "الخادم" (localStorage)
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    serverFiles[fileId] = {
-                        name: file.name,
-                        type: file.type,
-                        size: file.size,
-                        data: e.target.result,
-                        uploadedAt: new Date().toISOString(),
-                        views: 0
-                    };
-                    
-                    // حفظ في التخزين المحلي
-                    localStorage.setItem('serverFiles', JSON.stringify(serverFiles));
-                    
-                    // إنشاء رابط للملف
-                    const fileUrl = `${window.location.origin}${window.location.pathname}?file=${fileId}`;
-                    generatedLink.value = fileUrl;
-                    
-                    // إنشاء كود QR
-                    generateQRCode(fileUrl);
-                    
-                    // إظهار نتيجة الرفع
-                    resultContainer.style.display = 'block';
-                    
-                    // التمرير إلى النتيجة
-                    resultContainer.scrollIntoView({ behavior: 'smooth' });
-                    
-                    // تحديث مساحة التخزين
-                    updateStorageUsage();
-                    
-                    // إخفاء شريط التقدم
-                    setTimeout(() => {
-                        progressContainer.style.display = 'none';
-                        progressBar.style.width = '0%';
-                    }, 1000);
-                    
-                    addConsoleMessage(`[UPLOAD] تم رفع الملف بنجاح: ${file.name}`, 'success');
-                    addConsoleMessage(`[SERVER] تم إنشاء الرابط: ${fileUrl}`);
-                };
-                reader.readAsDataURL(file);
+                // تعيين الرابط في الحقل
+                generatedLink.value = currentObjectUrl;
+                
+                // إنشاء كود QR
+                generateQRCode(currentObjectUrl);
+                
+                // إظهار نتيجة الرفع
+                resultContainer.style.display = 'block';
+                
+                // التمرير إلى النتيجة
+                resultContainer.scrollIntoView({ behavior: 'smooth' });
+                
+                // إخفاء شريط التقدم
+                setTimeout(() => {
+                    progressContainer.style.display = 'none';
+                    progressBar.style.width = '0%';
+                }, 1000);
+                
+                addConsoleMessage(`[SUCCESS] تم إنشاء الرابط: ${currentObjectUrl}`);
+                addConsoleMessage(`[INFO] يمكنك الآن مشاركة هذا الرابط أو مسح كود QR`);
             }
             
             // عرض معاينة الوسائط
@@ -733,12 +706,6 @@
                 addConsoleMessage(`[DOWNLOAD] تم تحميل QR Code للفايل: ${currentFile.name}`);
             }
             
-            // إنشاء معرف فريد للملف
-            function generateFileId() {
-                return Math.random().toString(36).substring(2, 10) + 
-                       Math.random().toString(36).substring(2, 10);
-            }
-            
             // تنسيق حجم الملف
             function formatFileSize(bytes) {
                 if (bytes < 1024) return bytes + " bytes";
@@ -746,64 +713,10 @@
                 else return (bytes / 1048576).toFixed(2) + " MB";
             }
             
-            // تحميل ملف من الرابط إذا كان موجوداً
-            function loadFileFromUrl() {
-                const urlParams = new URLSearchParams(window.location.search);
-                const fileId = urlParams.get('file');
-                
-                if (fileId && serverFiles[fileId]) {
-                    const file = serverFiles[fileId];
-                    
-                    // زيادة عدد المشاهدات
-                    file.views = (file.views || 0) + 1;
-                    localStorage.setItem('serverFiles', JSON.stringify(serverFiles));
-                    
-                    // عرض المعاينة
-                    showMediaPreviewFromData(file);
-                    
-                    // إنشاء الرابط
-                    const fileUrl = `${window.location.origin}${window.location.pathname}?file=${fileId}`;
-                    generatedLink.value = fileUrl;
-                    
-                    // إنشاء كود QR
-                    generateQRCode(fileUrl);
-                    
-                    // إظهار نتيجة الرفع
-                    resultContainer.style.display = 'block';
-                    
-                    addConsoleMessage(`[ACCESS] تم الوصول إلى الملف: ${file.name} من خلال الرابط المباشر`);
-                }
-            }
-            
-            // عرض معاينة من البيانات
-            function showMediaPreviewFromData(file) {
-                mediaPreview.style.display = 'block';
-                mediaPreview.innerHTML = '';
-                
-                const fileType = file.type.split('/')[0];
-                
-                if (fileType === 'image') {
-                    const img = document.createElement('img');
-                    img.src = file.data;
-                    img.alt = file.name;
-                    mediaPreview.appendChild(img);
-                } else if (fileType === 'video') {
-                    const video = document.createElement('video');
-                    video.src = file.data;
-                    video.controls = true;
-                    mediaPreview.appendChild(video);
-                } else if (fileType === 'audio') {
-                    const audio = document.createElement('audio');
-                    audio.src = file.data;
-                    audio.controls = true;
-                    mediaPreview.appendChild(audio);
-                }
-            }
-            
             // تهيئة التطبيق
             function initApp() {
-                loadFileFromUrl();
                 addConsoleMessage('[INFO] تم تهيئة التطبيق بنجاح');
+                addConsoleMessage('[INFO] يعمل هذا الإصدار محلياً ولا يتطلب خادمًا');
             }
             
             // بدء التشغيل
